@@ -17,7 +17,9 @@ public class JSONRespon {
     //用Json格式数据和客户端通行
     public static Boolean Respon(JSONObject jsonObject, HttpServletResponse response){
         JSONObject jsonObject_ = new JSONObject();
-        jsonObject_.put("params", jsonObject);
+        Map<String, JSONObject> params = new HashMap<>();
+        params.put("JSONObject", jsonObject);
+        jsonObject_.put("params", params);
         try (PrintWriter out = response.getWriter()){
             out.write(jsonObject_.toString());
             return true;
@@ -29,11 +31,15 @@ public class JSONRespon {
 
     //给客户端返回一个用户信息
     public static Boolean Respon(User user, HttpServletResponse response){
-        Map<String, String> params = new HashMap<>();
-        params.put("UserName", user.getUserName());
+        Map<String, JSONObject> params = new HashMap<>();
+        JSONObject jsonObject_ = new JSONObject();
+
+        jsonObject_.put("UserName", user.getUserName());
 //        params.put("Password", user.getPassword());
-        params.put("UserPhone", user.getUserPhone());
-        params.put("UserAddress", user.getUserAddress());
+        jsonObject_.put("UserPhone", user.getUserPhone());
+        jsonObject_.put("UserAddress", user.getUserAddress());
+
+        params.put("User", jsonObject_);
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("params", params);
@@ -66,7 +72,7 @@ public class JSONRespon {
 
         JSONObject responUsers = new JSONObject();
         //将格式转化好的jsonArray放到params，且索引值为users
-        params.put("users", jsonArray);
+        params.put("JSONArray", jsonArray);
         //将params放到responUsers中，客户端按照这样的相反顺序就可以读取到users的信息
         responUsers.put("params", params);
 

@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -83,8 +85,9 @@ public class LoginServlet extends HttpServlet {
                 }
                 jsonObject.put("params", params);
 //                out.write(jsonObject.toString());
-                jsonObject = (JSONObject.fromObject(params));
-                JSONRespon.Respon(jsonObject,response);
+//                jsonObject = (JSONObject.fromObject(params));
+                out.write(jsonObject.toString());
+//                JSONRespon.Respon(jsonObject, response);
 //                JSONRespon.Respon(UserDAO.SelectUsers("广东-广州"), response);
         }
     }
