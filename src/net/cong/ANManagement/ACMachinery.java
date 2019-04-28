@@ -9,6 +9,10 @@ public class ACMachinery {
     private String SerialNumber;
     //主要使用区域
     private String MajorAreas;
+    //购买者姓名
+    private String BuyerNmae;
+    //购买者联系方式
+    private String BuyerPhone;
 
     public String getMachineryType() {
         return MachineryType;
@@ -40,5 +44,21 @@ public class ACMachinery {
 
     public String getMajorAreas() {
         return MajorAreas;
+    }
+
+    public void setBuyerNmae(String buyerNmae) {
+        BuyerNmae = buyerNmae;
+    }
+
+    public String getBuyerNmae() {
+        return BuyerNmae;
+    }
+
+    public void setBuyerPhone(String buyerPhone) {
+        BuyerPhone = buyerPhone;
+    }
+
+    public String getBuyerPhone() {
+        return BuyerPhone;
     }
 }
