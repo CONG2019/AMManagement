@@ -40,6 +40,24 @@
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>net.cong.ANManagement.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdataUserServlet</servlet-name>
+        <servlet-class>net.cong.ANManagement.UpdataUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdataUserServlet</servlet-name>
+        <url-pattern>/UpdataUserServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- 一次登录7天有效 -->
     <session-config>
         <session-timeout>10080</session-timeout>

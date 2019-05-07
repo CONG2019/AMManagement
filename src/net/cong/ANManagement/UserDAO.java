@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,13 +102,14 @@ public class UserDAO {
             preparedStatement = null;
             resultSet = null;
             sqlStatement = new StringBuilder();
-            sqlStatement.append("REPLACE INTO user(UserName,Password,UserPhone,UserAddress) VALUES(?,?,?,?)");
+            sqlStatement.append("REPLACE INTO user(UserName,Password,UserPhone,UserAddress,Token) VALUES(?,?,?,?,?)");
             try {
                 preparedStatement = connection.prepareStatement(sqlStatement.toString());
                 preparedStatement.setString(1, user.getUserName());
                 preparedStatement.setString(2, user.getPassword());
                 preparedStatement.setString(3, user.getUserPhone());
                 preparedStatement.setString(4, user.getUserAddress());
+                preparedStatement.setString(5, user.getToken());
 
                 result = preparedStatement.executeUpdate();
             } catch (SQLException ex) {
@@ -124,13 +126,14 @@ public class UserDAO {
             preparedStatement = null;
             resultSet = null;
             sqlStatement = new StringBuilder();
-            sqlStatement.append("INSERT INTO user(UserName,Password,UserPhone,UserAddress) VALUES(?,?,?,?)");
+            sqlStatement.append("INSERT INTO user(UserName,Password,UserPhone,UserAddress,Token) VALUES(?,?,?,?,?)");
             try {
                 preparedStatement = connection.prepareStatement(sqlStatement.toString());
                 preparedStatement.setString(1, user.getUserName());
                 preparedStatement.setString(2, user.getPassword());
                 preparedStatement.setString(3, user.getUserPhone());
                 preparedStatement.setString(4, user.getUserAddress());
+                preparedStatement.setString(5, user.getToken());
 
                 result = preparedStatement.executeUpdate();
             } catch (SQLException ex) {
@@ -191,4 +194,5 @@ public class UserDAO {
             DBManager.closeAll(connection, preparedStatement, resultSet);
         }
     }
+
 }

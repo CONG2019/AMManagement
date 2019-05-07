@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -61,9 +62,13 @@ public class LoginServlet extends HttpServlet {
             JSONObject jsonObject = new JSONObject();
 
             //先判断用户是否已经登录
-            if(IsLogin.isLogin(Token, request)){
+            System.out.println("TOKEN: " + Token);
+            if(IsLogin.isLogin(Token)){
                 //已经登录，返回成功，并退出
                 params.put("Result", "success");
+                //更新一下Token的值
+                Token = accountNumber + "," + new Date().getTime();
+                IsLogin.SaveToken(Token);
                 params.put("Token", Token);
                 jsonObject.put("params", params);
                 out.write(jsonObject.toString());
@@ -76,9 +81,11 @@ public class LoginServlet extends HttpServlet {
                 if (user != null) {
                     params.put("Result", "success");
                     //账号密码正确，保存相关用户信息到session中，username是唯一的，这里用username作为token返回给客户端
-                    String token_ = accountNumber;
-                    HttpSession session = request.getSession();
-                    session.setAttribute(token_, user);
+                    String token_ = accountNumber + "," + new Date().getTime();
+//                    HttpSession session = request.getSession();
+//                    session.setAttribute(token_, user);
+                    //保存token
+                    IsLogin.SaveToken(token_);
                     params.put("Token", token_);
                 } else {
                     params.put("Result", "fail");
