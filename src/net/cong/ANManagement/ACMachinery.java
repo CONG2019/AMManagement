@@ -10,7 +10,7 @@ public class ACMachinery {
     //主要使用区域
     private String MajorAreas;
     //购买者姓名
-    private String BuyerNmae;
+    private String BuyerName;
     //购买者联系方式
     private String BuyerPhone;
 
@@ -46,12 +46,12 @@ public class ACMachinery {
         return MajorAreas;
     }
 
-    public void setBuyerNmae(String buyerNmae) {
-        BuyerNmae = buyerNmae;
+    public void setBuyerName(String buyerNmae) {
+        BuyerName = buyerNmae;
     }
 
-    public String getBuyerNmae() {
-        return BuyerNmae;
+    public String getBuyerName() {
+        return BuyerName;
     }
 
     public void setBuyerPhone(String buyerPhone) {

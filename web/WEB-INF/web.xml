@@ -58,6 +58,24 @@
         <url-pattern>/UpdataUserServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ACMSearchServlet</servlet-name>
+        <servlet-class>net.cong.ANManagement.ACMSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ACMSearchServlet</servlet-name>
+        <url-pattern>/ACMSearchServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ACMIInputServlet</servlet-name>
+        <servlet-class>net.cong.ANManagement.ACMIInputServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ACMIInputServlet</servlet-name>
+        <url-pattern>/ACMIInputServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- 一次登录7天有效 -->
     <session-config>
         <session-timeout>10080</session-timeout>

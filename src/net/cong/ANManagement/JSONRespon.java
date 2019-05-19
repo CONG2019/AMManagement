@@ -54,30 +54,63 @@ public class JSONRespon {
     }
 
     //给客户端返回一组用户信息
-    public static Boolean Respon(ArrayList<User> users, HttpServletResponse response){
+//    public static Boolean Respon(ArrayList<User> users, HttpServletResponse response){
+//        Map<String, JSONArray> params = new HashMap<>();
+//        JSONArray jsonArray = new JSONArray();
+//
+//        for (User user: users
+//             ) {
+//            JSONObject jsonObject = new JSONObject();
+//            //将用户信息保存到一个jsonObject
+//            jsonObject.put("UserName", user.getUserName());
+////            jsonObject.put("Password", user.getPassword());
+//            jsonObject.put("UserPhone", user.getUserPhone());
+//            jsonObject.put("UserAddress", user.getUserAddress());
+//            //将用户对应的jsonObject放到jsonArray中
+//            jsonArray.add(jsonObject);
+//        }
+//
+//        JSONObject responUsers = new JSONObject();
+//        //将格式转化好的jsonArray放到params，且索引值为users
+//        params.put("JSONArray", jsonArray);
+//        //将params放到responUsers中，客户端按照这样的相反顺序就可以读取到users的信息
+//        responUsers.put("params", params);
+//
+//        try (PrintWriter out = response.getWriter()){
+//            out.write(responUsers.toString());
+//            return true;
+//        }catch (IOException e){
+//            Logger.getLogger(JSONRespon.class.getName()).log(Level.SEVERE, null, e);
+//            return false;
+//        }
+//    }
+
+    //给客户端返回一组农机信息信息
+    public static Boolean Respon(ArrayList<ACMachinery> acMachineries, HttpServletResponse response){
         Map<String, JSONArray> params = new HashMap<>();
         JSONArray jsonArray = new JSONArray();
 
-        for (User user: users
-             ) {
+        for (ACMachinery acMachinery: acMachineries
+        ) {
             JSONObject jsonObject = new JSONObject();
-            //将用户信息保存到一个jsonObject
-            jsonObject.put("UserName", user.getUserName());
-//            jsonObject.put("Password", user.getPassword());
-            jsonObject.put("UserPhone", user.getUserPhone());
-            jsonObject.put("UserAddress", user.getUserAddress());
-            //将用户对应的jsonObject放到jsonArray中
+            //将农机信息保存到一个jsonObject
+            jsonObject.put("MachineryType", acMachinery.getMachineryType());
+            jsonObject.put("Manufacturer", acMachinery.getManufacturer());
+            jsonObject.put("SerialNumber", acMachinery.getSerialNumber());
+            jsonObject.put("MajorAreas", acMachinery.getMajorAreas());
+            jsonObject.put("BuyerName", acMachinery.getBuyerName());
+            jsonObject.put("BuyerPhone", acMachinery.getBuyerPhone());
+            //将农机对应的jsonObject放到jsonArray中
             jsonArray.add(jsonObject);
         }
-
-        JSONObject responUsers = new JSONObject();
-        //将格式转化好的jsonArray放到params，且索引值为users
+        JSONObject responACMachineries = new JSONObject();
+        //将格式转化好的jsonArray放到params，且索引值为JSONArray
         params.put("JSONArray", jsonArray);
         //将params放到responUsers中，客户端按照这样的相反顺序就可以读取到users的信息
-        responUsers.put("params", params);
+        responACMachineries.put("params", params);
 
         try (PrintWriter out = response.getWriter()){
-            out.write(responUsers.toString());
+            out.write(responACMachineries.toString());
             return true;
         }catch (IOException e){
             Logger.getLogger(JSONRespon.class.getName()).log(Level.SEVERE, null, e);
